@@ -1,0 +1,139 @@
+:root {
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --secondary: #334155;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --glass: rgba(30, 41, 59, 0.7);
+  --text-main: #f8fafc;
+  --border-glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--text-main);
+}
+
+.div-chart-container {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 850px;
+  height: 60vh;
+  min-height: 300px;
+  margin-bottom: 25px;
+  border: 1px solid var(--border-glass);
+}
+
+.controls {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  max-width: 850px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.input,
+.select {
+  flex: 1 1 140px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.select option {
+  background: #1e293b;
+  color: white;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn {
+  flex: 1 1 150px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-add {
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+}
+
+.btn-add:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-update {
+  background: var(--secondary);
+  color: #cbd5e1;
+}
+
+.btn-update:hover {
+  background: #475569;
+  color: white;
+}
+
+canvas {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    flex-direction: column;
+  }
+  .div-chart-container {
+    height: 350px;
+  }
+}
