@@ -27,12 +27,50 @@ function addData() {
   }
 }
 
+function removeLastData() {
+  if (!myChart || chartLabels.length === 0) {
+    alert("No data to remove.");
+    return;
+  }
+
+  chartLabels.pop();
+  chartData.pop();
+
+  myChart.destroy();
+  initChart();
+}
+
 function initChart() {
   const canvas = document.getElementById("canvas-myChart");
   const ctx = canvas.getContext("2d");
   const chartType = document.getElementById("select-chart-type").value;
 
   const textColor = "#cbd5e1";
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+        labels: { color: textColor },
+      },
+    },
+  };
+
+  if (chartType !== "pie") {
+    chartOptions.scales = {
+      y: {
+        beginAtZero: true,
+        grid: { color: "rgba(255, 255, 255, 0.1)" },
+        ticks: { color: textColor },
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: textColor },
+      },
+    };
+  }
 
   myChart = new Chart(ctx, {
     type: chartType,
